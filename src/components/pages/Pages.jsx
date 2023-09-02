@@ -8,6 +8,9 @@ import Pricing from "../pricing/Pricing"
 import Blog from "../blog/Blog"
 import Services from "../services/Services"
 import Contact from "../contact/Contact"
+import Plots from "../plots/plots"
+import Login from "../login"
+import Upload from "../Upload"
 
 const Pages = () => {
   return (
@@ -21,6 +24,9 @@ const Pages = () => {
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/pricing' component={Pricing} />
           <Route exact path='/contact' component={Contact} />
+          <Route exact path='/plots' component={Plots} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/upload' component={Upload} />
         </Switch>
         <Footer />
       </Router>
