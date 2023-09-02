@@ -7,9 +7,6 @@ header {
   top: 0;
   z-index: 99999;
 }
-header img {
-  width: 170px;
-}
 header a {
   margin-left: 30px;
   transition: 0.5s;
@@ -37,9 +34,6 @@ header .toggle {
 @media screen and (max-width: 768px) {
   header {
     padding: 0;
-  }
-  header img {
-    margin-top: 30px;
   }
   header .button {
     display: none;
