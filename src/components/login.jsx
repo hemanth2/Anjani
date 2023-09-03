@@ -9,6 +9,7 @@ const Login = (params) => {
   const navigate = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setEror] = useState('');
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ const Login = (params) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setEror(errorCode +' '+ errorMessage);
       });
   };
 
@@ -77,6 +78,7 @@ const Login = (params) => {
                 />
               </div>
               <br />
+              <p style={{color:'red'}}>{error}</p>
             </form>
           </center>
         </div>

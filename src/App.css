@@ -53,9 +53,8 @@ button i {
 }
 textarea,
 input {
-  border: none;
-  outline: none;
-  background: none;
+ padding: .5rem;
+ color:black;
 }
 .background {
   padding: 80px 0;

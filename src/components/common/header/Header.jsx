@@ -6,6 +6,13 @@ import { Link } from "react-router-dom"
 const Header = () => {
   const [navList, setNavList] = useState(false)
 
+  const closeNav=() =>{
+    console.log(window.screen.width)
+    if(window.screen.width < 850){
+      setNavList(false);
+    }
+  }
+
   return (
     <>
       <header>
@@ -17,7 +24,7 @@ const Header = () => {
             <ul className={navList ? "small" : "flex"}>
               {nav.map((list, index) => (
                 <li key={index}>
-                  <Link to={list.path}>{list.text}</Link>
+                  <Link onClick={closeNav} to={list.path}>{list.text}</Link>
                 </li>
               ))}
             </ul>

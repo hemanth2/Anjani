@@ -9,7 +9,7 @@ export const nav = [
   },
   {
     text: "site-map",
-    path: "/blog",
+    path: "/map",
   },
   {
     text: "contact",
