@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import "../home/recent/recent.css"
 import ItemDataService from '../../services/item.service';
 
 const Map = () => {
