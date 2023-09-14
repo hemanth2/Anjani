@@ -8,6 +8,8 @@ import Map from "../map/Map"
 import Contact from "../contact/Contact"
 import Plots from "../plots/plots"
 import Login from "../login"
+import Upload from "../Upload"
+import Report from "../Sale/report"
 
 const Pages = () => {
   return (
@@ -21,6 +23,8 @@ const Pages = () => {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/plots' component={Plots} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/up324' component={Upload} />
+          <Route exact path='/sale' component={Report} />
         </Switch>
         <Footer />
       </Router>

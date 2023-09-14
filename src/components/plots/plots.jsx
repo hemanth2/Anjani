@@ -5,7 +5,6 @@ import { auth } from '../../fbconfig';
 import { useHistory } from 'react-router-dom';
 
 const Plots = () => {
-
     const navigate = useHistory();
     const queryParameters = new URLSearchParams(window.location.search)
     var type = queryParameters.get("id")
@@ -30,9 +29,15 @@ const Plots = () => {
   }
  const updateStatus = ()  => {
     item.Status = item.Status ==='Booked' ? 'Open' : 'Booked';
+    const today = new Date();
+    item.bookedDate = item.Status==='Booked' ? today : null;
     ItemDataService.updateItem(type,item);
     alert('Data submitted successfully!');
     navigate.push('/plots?id='+type);
+  }
+  const logout =async () => {
+    await auth.signOut();
+    navigate.push('/login');
   }
   const moveTo = ()  => {
     type=pno
@@ -47,6 +52,7 @@ const Plots = () => {
     <>   
     
     <div className='container' style={{width:'100%',textAlign: 'center',margin:'3rem',backgroundColor:'#ECF6F6',padding:'2rem' }}>
+      <button onClick={logout} style={{float:'right',padding:'5px',margin:'1rem'}}>Logout</button>
     <input type='text' value={pno} onChange={inpChange} placeholder='plot No'/><input type="submit" onClick={moveTo} value='Search'/>
     <br/><br/>
     <div style={{width:'100%',margin:'auto'}}>
@@ -54,7 +60,6 @@ const Plots = () => {
         <p><strong>Status :</strong> {item.Status}</p>
         <p><strong>Length :</strong> {item.Length}</p>
         <p><strong>Width :</strong> {item.Width}</p>
-        <p><strong>Area :</strong> {item.Area}</p>
         <br/>
         <button onClick={updateStatus}>Update Status</button>
         <br/>

@@ -8,6 +8,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  query, where
 } from 'firebase/firestore';
 
 const bookCollectionRef = collection(db, 'items');
@@ -34,6 +35,13 @@ class ItemDataService {
     const itemDoc = doc(db, 'items', id);
     return getDoc(itemDoc);
   };
+
+  filterItem = (startDate) => {
+    console.log(startDate)
+    const q = query(bookCollectionRef, where('bookedDate', '>=', startDate));
+    return getDocs(q);
+  }
+
 }
 
 export default new ItemDataService();
