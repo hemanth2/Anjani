@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import ItemDataService from '../../services/item.service';
+import { useHistory } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../fbconfig';
 
 const Report = () => {
+  const navigate = useHistory();
     useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          navigate.push('/login?page=sale');
+        }
+      })
     const today = new Date();
     const todayString = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
     setStartDate(todayString);

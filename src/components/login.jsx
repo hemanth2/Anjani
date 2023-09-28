@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../fbconfig';
 import { useHistory } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 const Login = (params) => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -10,6 +12,15 @@ const Login = (params) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setEror] = useState('');
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          navigate.push('/plots');
+        } else {
+        }
+      });    
+  }, []);
 
   const onLogin = (e) => {
     e.preventDefault();

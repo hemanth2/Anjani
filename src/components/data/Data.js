@@ -4,8 +4,8 @@ export const nav = [
     path: "/",
   },
   {
-    text: "about",
-    path: "/about",
+    text: "Reports",
+    path: "/sale",
   },
   {
     text: "site-map",
