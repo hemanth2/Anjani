@@ -438,7 +438,7 @@ const Map = () => {
     c.lineWidth = 5;
 
     var d = new Date();
-    d.setDate(d.getDate() - 31);
+    d.setDate(d.getDate() - 11);
 
     data.docs.map((doc) => {
       var plot = doc.data();
@@ -449,12 +449,16 @@ const Map = () => {
         { x: plot.Dx, y: plot.Dy },
       ];
 
-      if (plot.Status === "Open") {
-        c.fillStyle = "white";
-      } else if (plot.Status === "Booked" && plot.bookedDate > d - 10) {
+      if (plot.Status === "Allotted") {
+        c.fillStyle = "#82E0AA";
+      } else if (
+        plot.Status === "Booked" &&
+        plot.bookedDate &&
+        plot.bookedDate.toDate() > d
+      ) {
         c.fillStyle = "#FFC300";
       } else {
-        c.fillStyle = "#82E0AA";
+        c.fillStyle = "white";
       }
       c.beginPath();
       c.moveTo(vertices[0].x, vertices[0].y);

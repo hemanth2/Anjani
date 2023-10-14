@@ -35,7 +35,7 @@ const Plots = () => {
     } else if (item.Status === "Allotted") {
       item.Status = "Open";
     } else {
-      item.status = "Booked";
+      item.Status = "Booked";
       item.bookedDate = today;
     }
     ItemDataService.updateItem(type, item);
